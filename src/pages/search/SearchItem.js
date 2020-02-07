@@ -13,14 +13,15 @@ export default ({store}) => (
     <Image source={{uri:store.avatar}} style={styles.avatar} />
     <View>
       <Text style={styles.storeName}>{store.nome}</Text>
-      {store.rate > 0 &&
+      {store.rate > 0 ?
         <View style={styles.rate}>
           <Icon type='AntDesign' name='star' style={styles.star}/>
           <Text style={styles.rateText}>{(store.rate * 5 / 100).toFixed(1)}</Text> 
         </View>
+      :
+        <Icon type='AntDesign' name='staro' style={styles.star}/>
       }
     </View>
-    
   </TouchableOpacity>
 )
 
