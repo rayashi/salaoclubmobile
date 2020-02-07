@@ -5,19 +5,10 @@ import {
   StatusBar
 } from 'react-native';
 
-import Colors from './styles/Colors';
 import store from './redux/Store';
 import Routes from './Routes';
-import setupAxios from './shared/AxiosSetup';
-import NavigationService from './NavigationService';
-
 
 export default App = () => {
-  useEffect(setup, []);
-
-  function setup(){
-    setupAxios();
-  }
   
   return(
     <Provider store={store}>
