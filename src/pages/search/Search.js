@@ -1,35 +1,40 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from "react-redux";
-import { FlatList, StyleSheet } from 'react-native';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {FlatList, StyleSheet} from 'react-native';
 
-import { getStores } from './SearchActions';
+import {getStores} from './SearchActions';
 import SearchItem from './SearchItem';
 
-export default () => {
+export default ({navigation}) => {
   const dispatch = useDispatch();
-  const { stores, loading } = useSelector(state => state.SearchReducer);
+  const {stores, loading} = useSelector(state => state.SearchReducer);
 
   useEffect(init, []);
 
-  function init(){
+  function init() {
     dispatch(getStores());
   }
 
-  return(
+  function onStorePress(store) {
+    navigation.navigate('Store', {store});
+  }
+
+  return (
     <FlatList
       style={styles.content}
       data={stores}
       keyExtractor={(item, index) => index.toString()}
-      renderItem={({item}) => <SearchItem store={item}/>}
+      renderItem={({item}) => (
+        <SearchItem store={item} onPress={onStorePress} />
+      )}
       onRefresh={() => init()}
       refreshing={loading}
     />
-  )  
-}
-
+  );
+};
 
 const styles = StyleSheet.create({
   content: {
-    margin: 5
-  }
+    margin: 5,
+  },
 });

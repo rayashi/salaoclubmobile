@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-  Text
-} from 'react-native';
+import {Text} from 'react-native';
 
-export default () => (
-  <Text>Store</Text>
-)
+export default ({route, navigation}) => {
+  return <Text>{route.params.store.nome}</Text>;
+};
