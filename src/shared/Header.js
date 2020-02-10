@@ -5,44 +5,44 @@ import {
   TouchableOpacity,
   Text,
   SafeAreaView,
-  StatusBar,
 } from 'react-native';
 import {Icon} from 'native-base';
 
 import Colors from '../styles/Colors';
 
-export default ({leftIcon, title, rightIcon, onLeftButtonPress, onRightButtonPress}) => (
+export default ({
+  leftIcon,
+  title,
+  rightIcon,
+  onLeftButtonPress,
+  onRightButtonPress,
+}) => (
   <SafeAreaView style={styles.main}>
-    
     <View style={styles.container}>
       <View style={styles.left}>
-        {leftIcon ? (
-          <TouchableOpacity
-            style={styles.button}
-            onPress={onLeftButtonPress}>
+        {leftIcon && (
+          <TouchableOpacity style={styles.button} onPress={onLeftButtonPress}>
             <Icon
               style={styles.iconLeft}
               name={leftIcon.name}
               type={leftIcon.type}
             />
           </TouchableOpacity>
-        ) : null}
+        )}
       </View>
       <View style={styles.middle}>
         <Text style={styles.title}>{title}</Text>
       </View>
       <View style={styles.right}>
-        {rightIcon ? (
-          <TouchableOpacity
-            style={styles.button}
-            onPress={onRightButtonPress}>
+        {rightIcon && (
+          <TouchableOpacity style={styles.button} onPress={onRightButtonPress}>
             <Icon
               style={styles.iconRight}
               name={rightIcon.name}
               type={rightIcon.type}
             />
           </TouchableOpacity>
-        ) : null}
+        )}
       </View>
     </View>
   </SafeAreaView>

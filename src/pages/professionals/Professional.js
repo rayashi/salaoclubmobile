@@ -14,11 +14,14 @@ export default ({professional, onPress}) => {
       key={professional.id}
       style={styles.content}
       onPress={onSelfPress}>
-
       {professional.avatar ? (
         <Image source={{uri: professional.avatar}} style={styles.avatar} />
       ) : (
-        <Icon name='user-circle' type='FontAwesome5' style={styles.avatarIcon} />
+        <Icon
+          name="user-circle"
+          type="FontAwesome5"
+          style={styles.avatarIcon}
+        />
       )}
 
       <Text style={styles.professionalName}>{professional.nome}</Text>
@@ -50,5 +53,5 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     color: Colors.primary,
-  }
+  },
 });

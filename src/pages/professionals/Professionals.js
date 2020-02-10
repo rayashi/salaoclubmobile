@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, View, FlatList} from 'react-native';
 
 import Header from '../../shared/Header';
-import Separator from '../../shared/Separator';
 import Professional from './Professional';
 import Colors from '../../styles/Colors';
+import { setCheckoutItem } from '../checkout/CheckoutActions';
 
 export default ({route, navigation}) => {
   const dispatch = useDispatch();
@@ -26,7 +26,8 @@ export default ({route, navigation}) => {
   }
 
   function onProfessionalPress(professional) {
-    alert(professional.nome);
+    dispatch(setCheckoutItem({service, professional}));
+    navigation.navigate('TimePicker');
   }
 
   return (
