@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'GET_SERVICES':
-      return {...state, loading: true};
+      return {...state, loading: true, services: INITIAL_STATE.services};
 
     case 'GET_SERVICES_SUCCESS':
       return {...state, loading: false, services: action.payload};

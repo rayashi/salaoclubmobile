@@ -3,5 +3,6 @@ export default {
   secondary: '#230453',
   tertiary: '#4D0466',
   quaternary: '#94044F',
-  quinary: '#F9D986'
+  quinary: '#F9D986',
+  separator: 'rgba(0,0,0,0.2)',
 }

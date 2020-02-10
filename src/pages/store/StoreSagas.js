@@ -11,16 +11,31 @@ const fetchServices = async storeId => {
     ativo: 'True',
   };
   const response = await api.get('/servicos', {params});
-  console.log(response.data);
   return response.data;
 };
 
 export function* getServicesAsync(action) {
   try {
-    const services = yield call(fetchServices, action.payload);
+    let services = yield call(fetchServices, action.payload);
+    services = formattServices(services);
     yield put(getServicesSuccess(services));
   } catch (e) {
     console.log(e);
     yield put(getServicesFailed());
   }
+}
+
+formattServices = services => {
+  return services.map(service => {
+    let result = {
+      ...service,
+      preco: parseFloat(service.preco),
+      formattedPrice: `R$ ${service.preco.replace('.', ',')}`,    
+    }
+    
+    if(service.fidel_resgate && service.fidel_acumula){
+      result.rewardMsg = `A cada ${service.fidel_resgate/service.fidel_acumula} você ganha 1`;
+    }
+    return result;
+  });
 }
