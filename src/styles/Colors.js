@@ -4,5 +4,5 @@ export default {
   tertiary: '#4D0466',
   quaternary: '#94044F',
   quinary: '#F9D986',
-  separator: 'rgba(0,0,0,0.2)',
+  separator: '#f2f2f2',
 }

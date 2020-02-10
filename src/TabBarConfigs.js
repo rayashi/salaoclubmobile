@@ -1,19 +1,19 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import Colors from './styles/Colors';
-import { Icon } from 'native-base';
+import {Icon} from 'native-base';
 
-export const tabBarOptions = { 
-  showLabel: false
-}
+export const tabBarOptions = {
+  showLabel: false,
+};
 
 export const screenOptions = ({route}) => ({
-  tabBarIcon: ({ focused, color, size }) => {
+  tabBarIcon: ({focused, color, size}) => {
     let iconName, iconType;
 
     if (route.name === 'Search') {
       iconName = 'ios-search';
-      iconType = 'Ionicons'
+      iconType = 'Ionicons';
     } else if (route.name === 'Schedule') {
       iconName = 'calendar';
       iconType = 'AntDesign';
@@ -23,22 +23,22 @@ export const screenOptions = ({route}) => ({
     }
 
     return (
-      <Icon 
-        name={iconName} 
-        type={iconType} 
+      <Icon
+        name={iconName}
+        type={iconType}
         style={focused ? styles.activeIcon : styles.inactiveIcon}
-        />
+      />
     );
-  }
+  },
 });
 
 const styles = StyleSheet.create({
   activeIcon: {
     color: Colors.secondary,
-    fontSize: 24
+    fontSize: 24,
   },
   inactiveIcon: {
     color: 'gray',
-    fontSize: 20
-  }
+    fontSize: 20,
+  },
 });

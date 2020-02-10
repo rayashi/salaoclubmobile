@@ -1,8 +1,11 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {StyleSheet, TouchableOpacity, Text, View, FlatList} from 'react-native';
+import {StyleSheet, Text, View, FlatList} from 'react-native';
 
+import Header from '../../shared/Header';
 import Separator from '../../shared/Separator';
+import Professional from './Professional';
+import Colors from '../../styles/Colors';
 
 export default ({route, navigation}) => {
   const dispatch = useDispatch();
@@ -18,26 +21,31 @@ export default ({route, navigation}) => {
     valid_professionals = professionals;
   }
 
+  function onBackwardPress() {
+    navigation.goBack();
+  }
+
   function onProfessionalPress(professional) {
     alert(professional.nome);
   }
 
   return (
     <View style={styles.content}>
+      
+      <Header
+        onLeftButtonPress={onBackwardPress}
+        leftIcon={{name: 'ios-arrow-back', type: 'Ionicons'}}
+        title={'Escolha um Profissional'}
+      />
+
       <FlatList
-        style={styles.content}
+        style={styles.list}
         data={valid_professionals}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({item}) => (
-          <TouchableOpacity
-            key={item.id}
-            style={styles.service}
-            onPress={onProfessionalPress.bind(this, item)}>
-            <Text style={styles.name}>{item.nome}</Text>
-          </TouchableOpacity>
+          <Professional professional={item} onPress={onProfessionalPress} />
         )}
         refreshing={loading}
-        ItemSeparatorComponent={() => <Separator />}
         showsVerticalScrollIndicator={false}
       />
     </View>
@@ -47,6 +55,9 @@ export default ({route, navigation}) => {
 const styles = StyleSheet.create({
   content: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: Colors.separator,
+  },
+  list: {
+    margin: 5,
   },
 });
