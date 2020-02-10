@@ -1,11 +1,11 @@
-export const getServices = storeId => ({
-  type: 'GET_SERVICES',
+export const getStoreInfo = storeId => ({
+  type: 'GET_STORE_INFO',
   payload: storeId,
 });
 
-export const getServicesSuccess = stores => ({
-  type: 'GET_SERVICES_SUCCESS',
-  payload: stores,
+export const getStoreInfoSuccess = info => ({
+  type: 'GET_STORE_INFO_SUCCESS',
+  payload: info,
 });
 
-export const getServicesFailed = () => ({type: 'GET_SERVICES_FAILED'});
+export const getStoreInfoFailed = () => ({type: 'GET_STORE_INFO_FAILED'});

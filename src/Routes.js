@@ -9,6 +9,7 @@ import Profile from './pages/profile/Profile';
 import Schedule from './pages/schedule/Schedule';
 import Auth from './pages/auth/Auth';
 import Store from './pages/store/Store';
+import Professionals from './pages/professionals/Professionals';
 
 const OrderStack = () => {
   const Stack = createStackNavigator();
@@ -17,6 +18,7 @@ const OrderStack = () => {
     <Stack.Navigator headerMode="none">
       <Stack.Screen name="Search" component={Search} />
       <Stack.Screen name="Store" component={Store} />
+      <Stack.Screen name="Professionals" component={Professionals} />
     </Stack.Navigator>
   );
 };

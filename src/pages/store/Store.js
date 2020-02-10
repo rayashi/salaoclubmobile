@@ -4,7 +4,7 @@ import {StyleSheet, View} from 'react-native';
 
 import StoreHeader from './StoreHeader';
 import StoreServices from './StoreServices';
-import {getServices} from './StoreActions';
+import {getStoreInfo} from './StoreActions';
 
 export default ({route, navigation}) => {
   const dispatch = useDispatch();
@@ -14,13 +14,13 @@ export default ({route, navigation}) => {
   useEffect(init, []);
 
   function init() {
-    dispatch(getServices(store.id));
+    dispatch(getStoreInfo(store.id));
   }
 
   return (
     <View style={styles.content}>
       <StoreHeader store={store} />
-      <StoreServices services={services} />
+      <StoreServices services={services} navigation={navigation} />
     </View>
   );
 };
