@@ -13,7 +13,7 @@ const fetchAvailableTimes = async item => {
     id_salao: item.store.id,
     id_serv: item.service.id,
     id_prof: item.professional.id,
-    qtd_dias: 8,
+    qtd_dias: 4,
     data: Moment(new Date()).format('YYYY-MM-DD'),
   };
   const response = await api.get('/get_hrs_disp', {params});

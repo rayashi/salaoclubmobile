@@ -5,6 +5,7 @@ import {StyleSheet, View, FlatList, ScrollView} from 'react-native';
 import {setCheckoutItem} from '../checkout/CheckoutActions';
 import {getAvailableTimes} from './TimePickerActions';
 import Day from './Day';
+import Header from '../../shared/Header';
 
 export default ({route, navigation}) => {
   const dispatch = useDispatch();
@@ -16,11 +17,21 @@ export default ({route, navigation}) => {
   function init() {
     dispatch(getAvailableTimes(item));
   }
+  
+  function onBackwardPress() {
+    navigation.goBack();
+  }
 
   function onTimePress(time) {}
 
   return (
     <View style={styles.content}>
+      <Header
+        onLeftButtonPress={onBackwardPress}
+        leftIcon={{name: 'ios-arrow-back', type: 'Ionicons'}}
+        title={'Qual horário?'}
+      />
+
       <ScrollView showsVerticalScrollIndicator={false}>
         <FlatList
           horizontal
