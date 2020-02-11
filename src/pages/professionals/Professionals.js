@@ -5,17 +5,17 @@ import {StyleSheet, View, FlatList} from 'react-native';
 import Header from '../../shared/Header';
 import Professional from './Professional';
 import Colors from '../../styles/Colors';
-import { setCheckoutItem } from '../checkout/CheckoutActions';
+import {setCheckoutItem} from '../checkout/CheckoutActions';
 
-export default ({route, navigation}) => {
+export default ({navigation}) => {
   const dispatch = useDispatch();
   const {professionals, loading} = useSelector(state => state.StoreReducer);
-  const {service} = route.params;
+  const {item} = useSelector(state => state.CheckoutReducer);
   let valid_professionals = [];
 
-  if (professionals && service) {
+  if (professionals && item.service) {
     valid_professionals = professionals.filter(professional =>
-      professional.servicos.includes(service.id),
+      professional.servicos.includes(item.service.id),
     );
   } else {
     valid_professionals = professionals;
@@ -26,13 +26,12 @@ export default ({route, navigation}) => {
   }
 
   function onProfessionalPress(professional) {
-    dispatch(setCheckoutItem({service, professional}));
+    dispatch(setCheckoutItem({...item, professional}));
     navigation.navigate('TimePicker');
   }
 
   return (
     <View style={styles.content}>
-      
       <Header
         onLeftButtonPress={onBackwardPress}
         leftIcon={{name: 'ios-arrow-back', type: 'Ionicons'}}

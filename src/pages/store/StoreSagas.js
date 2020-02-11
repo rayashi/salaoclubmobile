@@ -31,7 +31,7 @@ export function* getStoreInfoAsync(action) {
       call(fetchServices, action.payload),
       call(fetchProfessionals, action.payload),
     ]);
-    services = formattServices(services);
+    services = formatServices(services);
     professionals = formatProfessionals(professionals);
     yield put(getStoreInfoSuccess({services, professionals}));
   } catch (e) {
@@ -49,7 +49,7 @@ const formatProfessionals = profs => {
   }));
 };
 
-const formattServices = services => {
+const formatServices = services => {
   return services.map(service => {
     let result = {
       ...service,

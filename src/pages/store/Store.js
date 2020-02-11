@@ -20,7 +20,11 @@ export default ({route, navigation}) => {
   return (
     <View style={styles.content}>
       <StoreHeader store={store} />
-      <StoreServices services={services} navigation={navigation} />
+      <StoreServices
+        store={store}
+        services={services}
+        navigation={navigation}
+      />
     </View>
   );
 };

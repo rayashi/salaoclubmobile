@@ -1,16 +1,18 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Text, View, FlatList} from 'react-native';
-import {useSelector} from 'react-redux';
+import {StyleSheet, View, FlatList} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
 
-import Colors from '../../styles/Colors';
 import Separator from '../../shared/Separator';
 import Service from './Service';
+import {setCheckoutItem} from '../checkout/CheckoutActions';
 
-export default ({services, navigation}) => {
+export default ({store, services, navigation}) => {
+  const dispatch = useDispatch();
   const {loading} = useSelector(state => state.SearchReducer);
 
   function onServicePress(service) {
-    navigation.navigate('Professionals', {service});
+    dispatch(setCheckoutItem({store, service})); 
+    navigation.navigate('Professionals');
   }
 
   return (
