@@ -17,10 +17,10 @@ export default ({service, onPress}) => {
         )}
         <Text style={styles.servicePrice}>{service.duracao}minutos</Text>
       </View>
-      {service.descricao && (
+      {!!service.descricao && (
         <Text style={styles.serviceDescription}>{service.descricao}</Text>
       )}
-      {service.rewardMsg && (
+      {!!service.rewardMsg && (
         <Text style={styles.rewardMsg}>{service.rewardMsg}</Text>
       )}
     </TouchableOpacity>

@@ -8,7 +8,7 @@ import {setCheckoutItem} from '../checkout/CheckoutActions';
 
 export default ({store, services, navigation}) => {
   const dispatch = useDispatch();
-  const {loading} = useSelector(state => state.SearchReducer);
+  const {loading} = useSelector(state => state.StoreReducer);
 
   function onServicePress(service) {
     dispatch(setCheckoutItem({store, service})); 

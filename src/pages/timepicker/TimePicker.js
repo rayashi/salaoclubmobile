@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {StyleSheet, View, FlatList, ScrollView} from 'react-native';
 
 import {setCheckoutItem} from '../checkout/CheckoutActions';
-import {getAvailableTimes} from './TimePickerActions';
+import {getAvailableTimes, resetAvailableTimes} from './TimePickerActions';
 import Day from './Day';
 import Header from '../../shared/Header';
 
@@ -15,9 +15,9 @@ export default ({route, navigation}) => {
   useEffect(init, []);
 
   function init() {
-    dispatch(getAvailableTimes(item));
+    dispatch(getAvailableTimes({item, first: true}));
   }
-  
+
   function onBackwardPress() {
     navigation.goBack();
   }
@@ -26,6 +26,7 @@ export default ({route, navigation}) => {
 
   return (
     <View style={styles.content}>
+
       <Header
         onLeftButtonPress={onBackwardPress}
         leftIcon={{name: 'ios-arrow-back', type: 'Ionicons'}}
@@ -39,6 +40,10 @@ export default ({route, navigation}) => {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => <Day day={item} onPress={onTimePress} />}
           showsHorizontalScrollIndicator={false}
+          refreshing={loading}
+          onRefresh={() => dispatch(getAvailableTimes({item, first: true}))}
+          onEndReached={() => dispatch(getAvailableTimes({item}))}
+          onEndReachedThreshold={0.8}
         />
       </ScrollView>
     </View>
@@ -48,6 +53,6 @@ export default ({route, navigation}) => {
 const styles = StyleSheet.create({
   content: {
     flex: 1,
-    backgroundColor: 'white'
-  },
+    backgroundColor: 'white',
+  }
 });
