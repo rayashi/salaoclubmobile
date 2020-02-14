@@ -11,6 +11,7 @@ import Auth from './pages/auth/Auth';
 import Store from './pages/store/Store';
 import Professionals from './pages/professionals/Professionals';
 import TimePicker from './pages/timepicker/TimePicker';
+import Checkout from './pages/checkout/Checkout';
 
 const OrderStack = () => {
   const Stack = createStackNavigator();
@@ -45,6 +46,7 @@ export default () => {
         <Stack.Screen name="Home" component={HomeTabs} />
         <Stack.Screen name="Auth" component={Auth} />
         <Stack.Screen name="TimePicker" component={TimePicker} />
+        <Stack.Screen name="Checkout" component={Checkout} />
       </Stack.Navigator>
     </NavigationContainer>
   );

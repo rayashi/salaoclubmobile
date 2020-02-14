@@ -14,8 +14,8 @@ const {width, height} = Dimensions.get('window');
 const DAY_WIDTH = width / 3.5;
 
 export default ({day, onPress}) => {
-  function onTimePress() {
-    onPress();
+  function onTimePress(time) {
+    onPress(time);
   }
 
   return (
@@ -31,10 +31,10 @@ export default ({day, onPress}) => {
         )}
         {day.hrs.map(time => (
           <TouchableOpacity
-            key={time}
+            key={time.formattedTime}
             style={styles.timeButton}
-            onPress={onTimePress}>
-            <Text style={styles.timeText}>{time.slice(1)}</Text>
+            onPress={onTimePress.bind(this, time)}>
+            <Text style={styles.timeText}>{time.formattedTime}</Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -47,21 +47,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRightWidth: 1,
     borderColor: Colors.separator,
-    width: DAY_WIDTH
+    width: DAY_WIDTH,
   },
   dayHeader: {
     width: '100%',
     padding: 5,
     alignItems: 'center',
     borderBottomColor: Colors.separator,
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
   },
   timeText: {
     color: 'white',
     fontWeight: 'bold',
   },
   dayBody: {
-    padding: 4
+    padding: 4,
   },
   timeButton: {
     padding: 8,

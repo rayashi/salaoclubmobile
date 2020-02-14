@@ -22,7 +22,10 @@ export default ({route, navigation}) => {
     navigation.goBack();
   }
 
-  function onTimePress(time) {}
+  function onTimePress(time) {
+    dispatch(setCheckoutItem({...item, time}));
+    navigation.navigate('Checkout');
+  }
 
   return (
     <View style={styles.content}>
