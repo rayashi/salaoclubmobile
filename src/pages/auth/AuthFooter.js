@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 20,
+    padding: 10,
   },
   buttonText: {
     color: 'white'

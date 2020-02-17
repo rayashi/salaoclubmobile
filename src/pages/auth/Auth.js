@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: Colors.primary,
+    padding: 20,
   },
   logo: {
     resizeMode: 'contain',

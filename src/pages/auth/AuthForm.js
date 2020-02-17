@@ -3,6 +3,7 @@ import {TextInput, StyleSheet, View} from 'react-native';
 import {Icon} from 'native-base';
 
 import Colors from '../../styles/Colors';
+import Button from '../../shared/Button';
 
 export default props => {
   return (
@@ -31,7 +32,8 @@ export default props => {
           underlineColorAndroid={Colors.lightAlpha}
         />
       </View>
-      
+
+      <Button color={Colors.tertiary} text='ENTRAR' />
     </View>
   );
 };
