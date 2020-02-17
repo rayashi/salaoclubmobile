@@ -1,4 +1,5 @@
 const INITIAL_STATE = {
+  user: null,
   token: null,
   loading: false
 };
@@ -10,7 +11,7 @@ export default (state = INITIAL_STATE, action) => {
       return {...state, loading: true};
 
     case 'LOGIN_SUCCESS':
-      return {...state, loading: false};
+      return {...state, loading: false, user: action.payload};
 
     case 'LOGIN_FAILED':
       return {...state, loading: false};

@@ -1,30 +1,22 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {TextInput, StyleSheet, View} from 'react-native';
 import {Icon} from 'native-base';
-import {useDispatch} from 'react-redux';
 
 import Colors from '../../styles/Colors';
 import Button from '../../shared/Button';
-import {login} from './AuthActions';
 
 export default props => {
-  const dispatch = useDispatch();
-  const [email, setEmail] = useState({});
-  const [password, setPassword] = useState({});
-
-  function onSubmit() {
-    dispatch(login({email, password}));
-  }
 
   return (
     <View style={styles.content}>
       <View style={styles.inputRow}>
         <Icon name="mail" type="Feather" style={styles.inputIcon} />
         <TextInput
+          value={props.email}
           style={styles.input}
           autoCapitalize="none"
           keyboardType="email-address"
-          onChangeText={text => setEmail(text)}
+          onChangeText={text => props.setEmail(text)}
           placeholder={'Email'}
           placeholderTextColor={Colors.lightAlpha}
           underlineColorAndroid={Colors.lightAlpha}
@@ -33,17 +25,18 @@ export default props => {
       <View style={styles.inputRow}>
         <Icon name="lock" type="Feather" style={styles.inputIcon} />
         <TextInput
+          value={props.password}
           secureTextEntry
           style={styles.input}
           autoCapitalize="none"
-          onChangeText={text => setPassword(text)}
+          onChangeText={text => props.setPassword(text)}
           placeholder={'Senha'}
           placeholderTextColor={Colors.lightAlpha}
           underlineColorAndroid={Colors.lightAlpha}
         />
       </View>
 
-      <Button color={Colors.tertiary} text="ENTRAR" onPress={onSubmit} />
+      <Button color={Colors.tertiary} text="ENTRAR" onPress={props.onSubmit} />
     </View>
   );
 };

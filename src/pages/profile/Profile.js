@@ -1,8 +1,13 @@
 import React from 'react';
-import {
-  Text
-} from 'react-native';
+import {Text, View} from 'react-native';
+import {useSelector} from 'react-redux';
 
-export default () => (
-  <Text>Profile</Text>
-)
+export default () => {
+  const {user} = useSelector(state => state.AuthReducer);
+
+  return(
+    <View>
+      {user && <Text>{user.user.first_name}</Text>}
+    </View>
+  )
+};

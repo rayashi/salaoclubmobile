@@ -43,9 +43,8 @@ export default () => {
   return (
     <NavigationContainer>
       <Stack.Navigator headerMode="none">
-        <Stack.Screen name="Auth" component={Auth} />
         <Stack.Screen name="Home" component={HomeTabs} />
-
+        <Stack.Screen name="Auth" component={Auth} />
         <Stack.Screen name="TimePicker" component={TimePicker} />
         <Stack.Screen name="Checkout" component={Checkout} />
       </Stack.Navigator>

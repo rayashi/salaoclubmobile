@@ -1,7 +1,6 @@
 import {all, call, put} from 'redux-saga/effects';
 import Config from 'react-native-config';
-
-import api from '../../shared/Api';
+import axios from 'axios';
 
 import {getStoreInfoSuccess, getStoreInfoFailed} from './StoreActions';
 
@@ -11,7 +10,7 @@ const fetchServices = async storeId => {
     removido: 'False',
     ativo: 'True',
   };
-  const response = await api.get('/servicos', {params});
+  const response = await axios.get('/servicos', {params});
   return response.data;
 };
 
@@ -21,7 +20,7 @@ const fetchProfessionals = async storeId => {
     removido: 'False',
     ativo: 'True',
   };
-  const response = await api.get('/profissionais', {params});
+  const response = await axios.get('/profissionais', {params});
   return response.data;
 };
 

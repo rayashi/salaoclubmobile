@@ -16,7 +16,7 @@ export default ({navigation}) => {
   }
 
   function onStorePress(store) {
-    navigation.navigate('Store', {store});
+    navigation.navigate('Auth', {store});
   }
 
   return (

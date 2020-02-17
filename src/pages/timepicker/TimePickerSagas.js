@@ -1,7 +1,7 @@
 import {call, put, select} from 'redux-saga/effects';
 import Moment from 'moment';
+import axios from 'axios';
 
-import api from '../../shared/Api';
 import {SEARCH_DAYS} from '../../shared/Constants';
 
 import {
@@ -18,7 +18,7 @@ const fetchAvailableTimes = async item => {
     qtd_dias: SEARCH_DAYS,
     data: Moment(item.date).format('YYYY-MM-DD'),
   };
-  const response = await api.get('/get_hrs_disp', {params});
+  const response = await axios.get('/get_hrs_disp', {params});
   return response.data.semana;
 };
 
