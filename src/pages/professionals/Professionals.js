@@ -6,11 +6,14 @@ import Header from '../../shared/Header';
 import Professional from './Professional';
 import Colors from '../../styles/Colors';
 import {setCheckoutItem} from '../checkout/CheckoutActions';
+import redirect from '../../shared/Redirect';
 
 export default ({navigation}) => {
   const dispatch = useDispatch();
   const {professionals, loading} = useSelector(state => state.StoreReducer);
   const {item} = useSelector(state => state.CheckoutReducer);
+  const {user} = useSelector(state => state.AuthReducer);
+  
   let valid_professionals = [];
 
   if (professionals && item.service) {
@@ -27,7 +30,8 @@ export default ({navigation}) => {
 
   function onProfessionalPress(professional) {
     dispatch(setCheckoutItem({...item, professional}));
-    navigation.navigate('TimePicker');
+    const destination = redirect({user, checkoutItem: {...item, professional}});
+    navigation.navigate(destination.route, destination.param);
   }
 
   return (

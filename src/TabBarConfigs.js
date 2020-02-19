@@ -11,7 +11,7 @@ export const screenOptions = ({route}) => ({
   tabBarIcon: ({focused, color, size}) => {
     let iconName, iconType;
 
-    if (route.name === 'Search') {
+    if (route.name === 'Order') {
       iconName = 'ios-search';
       iconType = 'Ionicons';
     } else if (route.name === 'Schedule') {

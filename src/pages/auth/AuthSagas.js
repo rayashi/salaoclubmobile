@@ -11,7 +11,7 @@ const fetchlogin = async ({email, password}) => {
   return response.data.token;
 };
 
-const fetchUser = async token => {
+const fetchUser = async () => {
   const response = await axios.get('/parametros');
   return response.data;
 };
@@ -30,11 +30,26 @@ export function* loginAsync(action) {
   try {
     const token = yield call(fetchlogin, action.payload);
     yield saveToken(token);
-    setAuthHeaders(token);
+    yield setAuthHeaders(token);
     const user = yield call(fetchUser, token);
-    yield put(loginSuccess(user));  
+    yield put(loginSuccess(user));
   } catch (e) {
     console.log(e);
+    yield put(loginFailed());
+  }
+}
+
+export function* startInitialLoadAsync() {
+  try {
+    console.log('start')
+    const token = yield call(fetchToken);
+    console.log(token)
+    yield setAuthHeaders(token);
+    const user = yield call(fetchUser, token);
+    console.log(user)
+    yield put(loginSuccess(user));  
+  } catch (e) {
+    console.log(e)
     yield put(loginFailed());
   }
 }

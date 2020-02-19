@@ -12,6 +12,7 @@ import Store from './pages/store/Store';
 import Professionals from './pages/professionals/Professionals';
 import TimePicker from './pages/timepicker/TimePicker';
 import Checkout from './pages/checkout/Checkout';
+import Loading from './pages/loading/Loading';
 
 const OrderStack = () => {
   const Stack = createStackNavigator();
@@ -30,7 +31,7 @@ const HomeTabs = () => {
 
   return (
     <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
-      <Tab.Screen name="Search" component={OrderStack} />
+      <Tab.Screen name="Order" component={OrderStack} />
       <Tab.Screen name="Schedule" component={Schedule} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
@@ -42,7 +43,8 @@ export default () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none">
+      <Stack.Navigator initialRouteName="Loading" headerMode="none">
+        <Stack.Screen name="Loading" component={Loading} />
         <Stack.Screen name="Home" component={HomeTabs} />
         <Stack.Screen name="Auth" component={Auth} />
         <Stack.Screen name="TimePicker" component={TimePicker} />

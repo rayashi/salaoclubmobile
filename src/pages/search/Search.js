@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {FlatList, StyleSheet} from 'react-native';
+import {StatusBar, FlatList, StyleSheet, View} from 'react-native';
 
 import {getStores} from './SearchActions';
 import SearchItem from './SearchItem';
@@ -16,20 +16,24 @@ export default ({navigation}) => {
   }
 
   function onStorePress(store) {
-    navigation.navigate('Auth', {store});
+    navigation.navigate('Store', {store});
   }
 
   return (
-    <FlatList
-      style={styles.content}
-      data={stores}
-      keyExtractor={(item, index) => index.toString()}
-      renderItem={({item}) => (
-        <SearchItem store={item} onPress={onStorePress} />
-      )}
-      onRefresh={() => init()}
-      refreshing={loading}
-    />
+    <View>
+      <StatusBar barStyle="dark-content" backgroundColor='white' />
+
+      <FlatList
+        style={styles.content}
+        data={stores}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({item}) => (
+          <SearchItem store={item} onPress={onStorePress} />
+        )}
+        onRefresh={() => init()}
+        refreshing={loading}
+      />
+    </View>
   );
 };
 

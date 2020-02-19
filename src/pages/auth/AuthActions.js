@@ -9,3 +9,5 @@ export const loginSuccess = stores => ({
 });
 
 export const loginFailed = () => ({type: 'LOGIN_FAILED'});
+
+export const startInitialLoad = () => ({type: 'START_INITIAL_LOAD'});

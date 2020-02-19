@@ -6,11 +6,13 @@ import {setCheckoutItem} from '../checkout/CheckoutActions';
 import {getAvailableTimes, resetAvailableTimes} from './TimePickerActions';
 import Day from './Day';
 import Header from '../../shared/Header';
+import redirect from '../../shared/Redirect';
 
-export default ({route, navigation}) => {
+export default ({navigation}) => {
   const dispatch = useDispatch();
   const {item} = useSelector(state => state.CheckoutReducer);
   const {times, loading} = useSelector(state => state.TimePickerReducer);
+  const {user} = useSelector(state => state.AuthReducer);
 
   useEffect(init, []);
 
@@ -24,7 +26,8 @@ export default ({route, navigation}) => {
 
   function onTimePress(time) {
     dispatch(setCheckoutItem({...item, time}));
-    navigation.navigate('Checkout');
+    const destination = redirect({user, checkoutItem: {...item, time}});
+    navigation.navigate(destination.route, destination.param);
   }
 
   return (
