@@ -1,5 +1,11 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, Image, View, StatusBar, Text} from 'react-native';
+import {
+  StyleSheet,
+  Image,
+  View,
+  StatusBar,
+  ActivityIndicator,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import logo from '../../images/logo.png';
@@ -18,7 +24,7 @@ export default ({navigation}) => {
   }
 
   function checkForFinishedLoading() {
-    if(!initialLoading){
+    if (!initialLoading) {
       navigation.navigate('Home');
     }
   }
@@ -27,7 +33,7 @@ export default ({navigation}) => {
     <View style={styles.content}>
       <StatusBar barStyle="light-content" backgroundColor={Colors.primary} />
       <Image source={logo} style={styles.logo} />
-      <Text style={styles.text}>loading ...</Text>
+      <ActivityIndicator color={Colors.quaternary} size="small" />
     </View>
   );
 };
@@ -48,5 +54,5 @@ const styles = StyleSheet.create({
   },
   text: {
     color: Colors.separator,
-  }
+  },
 });

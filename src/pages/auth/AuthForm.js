@@ -43,13 +43,14 @@ export default props => {
 
 const styles = StyleSheet.create({
   content: {
-    width: '100%',
+    alignSelf: 'stretch',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 30,
   },
   inputRow: {
+    alignSelf: 'stretch',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

@@ -21,6 +21,9 @@ export default (state = INITIAL_STATE, action) => {
     case 'LOGIN_FAILED':
       return {...state, loading: false, initialLoading: false};
 
+    case 'LOGOUT_SUCCESS':
+      return INITIAL_STATE;
+
     default:
       return state;
   }

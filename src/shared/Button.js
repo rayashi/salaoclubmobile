@@ -15,7 +15,7 @@ export default props => (
 
 const styles = StyleSheet.create({
   content: {
-    width: '100%',
+    alignSelf: 'stretch',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

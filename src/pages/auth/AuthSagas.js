@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import '../../Storage.config';
 import {setAuthHeaders} from '../../shared/Api';
-import {loginSuccess, loginFailed} from './AuthActions';
+import {loginSuccess, loginFailed, logoutSuccess} from './AuthActions';
 
 const fetchlogin = async ({email, password}) => {
   const data = {username: email, password: password};
@@ -26,6 +26,10 @@ export const saveToken = async token => {
   await storage.save({key: 'token', data: token});
 }
 
+const removeToken = async () => {
+  await storage.remove({key: 'token'});
+}
+
 export function* loginAsync(action) {
   try {
     const token = yield call(fetchlogin, action.payload);
@@ -41,15 +45,22 @@ export function* loginAsync(action) {
 
 export function* startInitialLoadAsync() {
   try {
-    console.log('start')
     const token = yield call(fetchToken);
-    console.log(token)
     yield setAuthHeaders(token);
     const user = yield call(fetchUser, token);
-    console.log(user)
     yield put(loginSuccess(user));  
   } catch (e) {
     console.log(e)
     yield put(loginFailed());
+  }
+}
+
+export function* logoutAsync() {
+  try {
+    yield call(removeToken);
+    yield setAuthHeaders(null);
+    yield put(logoutSuccess());
+  } catch (e) {
+    yield put(requestLoginFailued());
   }
 }

@@ -11,3 +11,7 @@ export const loginSuccess = stores => ({
 export const loginFailed = () => ({type: 'LOGIN_FAILED'});
 
 export const startInitialLoad = () => ({type: 'START_INITIAL_LOAD'});
+
+export const logout = () => ({type: 'LOGOUT'});
+
+export const logoutSuccess = () => ({type: 'LOGOUT_SUCCESS'});
