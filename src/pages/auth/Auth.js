@@ -1,5 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {SafeAreaView, StyleSheet, Image, View, StatusBar} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Image,
+  View,
+  StatusBar,
+  ActivityIndicator,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import logo from '../../images/logo.png';
@@ -8,11 +15,11 @@ import AuthForm from './AuthForm';
 import AuthFooter from './AuthFooter';
 import {login} from './AuthActions';
 import redirect from '../../shared/Redirect';
-import {Icon} from 'native-base';
+import {Icon, Toast} from 'native-base';
 
 export default ({navigation}) => {
   const dispatch = useDispatch();
-  const {user} = useSelector(state => state.AuthReducer);
+  const {user, loading, error} = useSelector(state => state.AuthReducer);
   const {item} = useSelector(state => state.CheckoutReducer);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +27,15 @@ export default ({navigation}) => {
   useEffect(() => {
     const destination = redirect({user, checkoutItem: item});
     navigation.navigate(destination.route, destination.param);
-  }, [user]);
+
+    if (error && !user) {
+      Toast.show({
+        text: 'Senha ou email informados incorretos 😖',
+        type: 'danger',
+        duration: 3500,
+      });
+    }
+  }, [user, navigation, item, error, loading]);
 
   function onSubmit() {
     dispatch(login({email, password}));
@@ -43,13 +58,19 @@ export default ({navigation}) => {
 
       <View style={styles.container}>
         <Image source={logo} style={styles.logo} />
-        <AuthForm
-          email={email}
-          password={password}
-          setEmail={setEmail}
-          setPassword={setPassword}
-          onSubmit={onSubmit}
-        />
+
+        {loading ? (
+          <ActivityIndicator color={Colors.quaternary} size="small" />
+        ) : (
+          <AuthForm
+            email={email}
+            password={password}
+            setEmail={setEmail}
+            setPassword={setPassword}
+            onSubmit={onSubmit}
+          />
+        )}
+
         <AuthFooter />
       </View>
     </SafeAreaView>

@@ -12,6 +12,8 @@ export const loginFailed = () => ({type: 'LOGIN_FAILED'});
 
 export const startInitialLoad = () => ({type: 'START_INITIAL_LOAD'});
 
+export const initialLoadFailed = () => ({type: 'INITIAL_LOAD_FAILED'});
+
 export const logout = () => ({type: 'LOGOUT'});
 
 export const logoutSuccess = () => ({type: 'LOGOUT_SUCCESS'});

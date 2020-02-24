@@ -6,7 +6,6 @@ import Colors from '../../styles/Colors';
 import Button from '../../shared/Button';
 
 export default props => {
-
   return (
     <View style={styles.content}>
       <View style={styles.inputRow}>

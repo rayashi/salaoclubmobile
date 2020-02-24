@@ -24,7 +24,9 @@ export default ({store, services, navigation}) => {
         style={styles.content}
         data={services}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({item}) => <Service service={item} onPress={onServicePress}/>}
+        renderItem={({item}) => (
+          <Service service={item} onPress={onServicePress} />
+        )}
         refreshing={loading}
         ItemSeparatorComponent={() => <Separator />}
         showsVerticalScrollIndicator={false}
@@ -38,5 +40,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     margin: 3,
-  }
+  },
 });

@@ -4,12 +4,15 @@ import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
 import Colors from '../../styles/Colors';
 
 export default ({service, onPress}) => {
-  function onSelfPress(){
+  function onSelfPress() {
     onPress(service);
   }
 
   return (
-    <TouchableOpacity key={service.id} style={styles.service} onPress={onSelfPress}>
+    <TouchableOpacity
+      key={service.id}
+      style={styles.service}
+      onPress={onSelfPress}>
       <Text style={styles.serviceName}>{service.nome}</Text>
       <View style={styles.detail}>
         {service.preco > 0 && (

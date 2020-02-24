@@ -14,5 +14,5 @@ export const getAvailableTimesFailed = () => ({
 
 export const resetAvailableTimes = times => ({
   type: 'RESET_AVAILABLE_TIMES',
-  payload: times
+  payload: times,
 });
