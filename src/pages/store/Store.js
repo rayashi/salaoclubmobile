@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, SafeAreaView} from 'react-native';
 
 import StoreHeader from './StoreHeader';
 import StoreServices from './StoreServices';
@@ -18,14 +18,14 @@ export default ({route, navigation}) => {
   }
 
   return (
-    <View style={styles.content}>
+    <SafeAreaView style={styles.content}>
       <StoreHeader store={store} />
       <StoreServices
         store={store}
         services={services}
         navigation={navigation}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

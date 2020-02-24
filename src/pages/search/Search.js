@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {StatusBar, FlatList, StyleSheet, View} from 'react-native';
+import {StatusBar, FlatList, StyleSheet, SafeAreaView} from 'react-native';
 
 import {getStores} from './SearchActions';
 import SearchItem from './SearchItem';
@@ -20,7 +20,7 @@ export default ({navigation}) => {
   }
 
   return (
-    <View>
+    <SafeAreaView>
       <StatusBar barStyle="dark-content" backgroundColor='white' />
 
       <FlatList
@@ -33,7 +33,7 @@ export default ({navigation}) => {
         onRefresh={() => init()}
         refreshing={loading}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -13,13 +13,20 @@ export default ({navigation}) => {
 
   useEffect(() => {
     !user && navigation.navigate('Auth');
+    const unsubscribe = navigation.addListener('tabPress', e => {
+      e.preventDefault();
+      !user && navigation.navigate('Auth');
+    });
+    return unsubscribe;
   });
 
   function onLogoutPress() {
     dispatch(logout());
   }
 
-  if (!user) return null;
+  if (!user) {
+    return null;
+  }
 
   return (
     <ScrollView style={styles.scrow}>
@@ -53,5 +60,5 @@ const styles = StyleSheet.create({
   userData: {
     alignItems: 'center',
     marginBottom: 10,
-  }
+  },
 });

@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     paddingHorizontal: 12,
-    marginVertical: 5,
+    marginVertical: 10,
     color: 'white',
   },
   inputIcon: {

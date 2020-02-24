@@ -1,7 +1,7 @@
 import React, {Component, useEffect} from 'react';
 import {Provider} from 'react-redux';
 import {Root} from 'native-base';
-import {StyleSheet, StatusBar, SafeAreaView} from 'react-native';
+import {StatusBar} from 'react-native';
 
 import setupAxios from './shared/Api';
 import store from './redux/Store';
@@ -16,16 +16,8 @@ export default class App extends Component {
     <Provider store={store}>
       <StatusBar barStyle="dark-content" backgroundColor="white" />
       <Root>
-        <SafeAreaView style={styles.container}>
-          <Routes />
-        </SafeAreaView>
+        <Routes />
       </Root>
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
