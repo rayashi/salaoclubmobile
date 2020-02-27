@@ -49,7 +49,7 @@ export default ({navigation}) => {
           refreshing={loading}
           onRefresh={() => dispatch(getAvailableTimes({item, first: true}))}
           onEndReached={() => dispatch(getAvailableTimes({item}))}
-          onEndReachedThreshold={0.8}
+          onEndReachedThreshold={0.5}
         />
       </ScrollView>
     </View>
