@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Text, StyleSheet, View, ScrollView, SafeAreaView} from 'react-native';
+import Moment from 'moment';
 
 import Header from '../../shared/Header';
 import Shadow from '../../styles/Shadow';
@@ -25,54 +26,61 @@ export default ({route, navigation}) => {
       <Header
         onLeftButtonPress={onBackwardPress}
         leftIcon={{name: 'ios-arrow-back', type: 'Ionicons'}}
-        title={'Confime seu agendamento'}
+        title={'Confirme seu agendamento'}
       />
-
-      <SafeAreaView style={styles.container}>
-        <View style={styles.item}>
-          <View style={styles.itemDetail}>
-            <View style={styles.titleLine}>
-              <Icon name="scissors" type="Feather" style={styles.titleIcon} />
-              <Text style={styles.titleText}>Serviço</Text>
+      <ScrollView>
+        <SafeAreaView style={styles.container}>
+          <View style={styles.item}>
+            <View style={styles.itemDetail}>
+              <View style={styles.titleLine}>
+                <Icon name="scissors" type="Feather" style={styles.titleIcon} />
+                <Text style={styles.titleText}>Serviço</Text>
+              </View>
+              <Text>{item.service.nome}</Text>
             </View>
-            <Text>{item.service.nome}</Text>
-          </View>
-
-          <View style={styles.itemDetail}>
-            <View style={styles.titleLine}>
-              <Icon
-                name="user-circle"
-                type="FontAwesome5"
-                style={styles.titleIcon}
-              />
-              <Text style={styles.titleText}>Profissional</Text>
+            <View style={styles.separator} />
+            <View style={styles.itemDetail}>
+              <View style={styles.titleLine}>
+                <Icon
+                  name="user-circle"
+                  type="FontAwesome5"
+                  style={styles.titleIcon}
+                />
+                <Text style={styles.titleText}>Profissional</Text>
+              </View>
+              <Text>{item.professional.nome}</Text>
             </View>
-            <Text>{item.professional.nome}</Text>
-          </View>
-
-          <View style={styles.itemDetail}>
-            <View style={styles.titleLine}>
-              <Icon name="calendar" type="AntDesign" style={styles.titleIcon} />
-              <Text style={styles.titleText}>Date e Horário</Text>
+            <View style={styles.separator} />
+            <View style={styles.itemDetail}>
+              <View style={styles.titleLine}>
+                <Icon
+                  name="calendar"
+                  type="AntDesign"
+                  style={styles.titleIcon}
+                />
+                <Text style={styles.titleText}>Date e Horário</Text>
+              </View>
+              <Text>{Moment(item.time.dateTime).format('dddd')}</Text>
+              <Text>
+                {item.time.dateTime.toLocaleDateString()} ás{' '}
+                {item.time.formattedTime}
+              </Text>
             </View>
-            <Text>
-              {item.time.dateTime.toLocaleDateString()} -{' '}
-              {item.time.formattedTime}
-            </Text>
-          </View>
-
-          <View style={styles.itemDetail}>
-            <View style={styles.titleLine}>
-              <Icon name="map-pin" type="Feather" style={styles.titleIcon} />
-              <Text style={styles.titleText}>Local</Text>
+            <View style={styles.separator} />
+            <View style={styles.itemDetail}>
+              <View style={styles.titleLine}>
+                <Icon name="map-pin" type="Feather" style={styles.titleIcon} />
+                <Text style={styles.titleText}>Local</Text>
+              </View>
+              <Text style={styles.titleText}>{item.store.nome}</Text>
+              <Text>{item.store.location}</Text>
             </View>
-            <Text>{item.store.location}</Text>
           </View>
-        </View>
-        <View style={styles.bottom}>
-          <Button text="Confirmar" color={Colors.primary} />
-        </View>
-      </SafeAreaView>
+          <View style={styles.bottom}>
+            <Button text="Confirmar" color={Colors.primary} />
+          </View>
+        </SafeAreaView>
+      </ScrollView>
     </View>
   );
 };
@@ -99,7 +107,7 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   bottom: {
-    margin: 10,
+    marginHorizontal: 12,
   },
   titleLine: {
     flexDirection: 'row',
@@ -107,10 +115,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   titleText: {
+    color: Colors.primary,
     fontWeight: 'bold',
   },
-
   titleIcon: {
+    color: Colors.primary,
     fontSize: 20,
     marginRight: 4,
   },

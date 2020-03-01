@@ -3,7 +3,6 @@ import {StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
 import {Icon} from 'native-base';
 
 import Colors from '../../styles/Colors';
-import Shadow from '../../styles/Shadow';
 
 export default ({professional, onPress}) => {
   function onSelfPress() {
@@ -38,7 +37,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     margin: 3,
     borderRadius: 10,
-    ...Shadow,
   },
   professionalName: {
     fontWeight: 'bold',

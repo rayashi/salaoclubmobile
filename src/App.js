@@ -1,7 +1,8 @@
-import React, {Component, useEffect} from 'react';
+import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import {Root} from 'native-base';
 import {StatusBar} from 'react-native';
+import 'moment/locale/pt-br';
 
 import setupAxios from './shared/Api';
 import store from './redux/Store';
