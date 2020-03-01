@@ -9,6 +9,7 @@ import {
 import {Icon} from 'native-base';
 
 import Colors from '../styles/Colors';
+import Shadow from '../styles/Shadow';
 
 export default ({
   leftIcon,
@@ -51,6 +52,7 @@ export default ({
 const styles = StyleSheet.create({
   main: {
     backgroundColor: 'white',
+    ...Shadow,
   },
   container: {
     height: 50,
@@ -64,9 +66,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     color: Colors.primary,
-  },
-  button: {
-    padding: 10,
   },
   left: {
     width: 40,
