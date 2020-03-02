@@ -3,6 +3,7 @@ const INITIAL_STATE = {
   token: null,
   loading: false,
   initialLoading: true,
+  error: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -19,6 +20,9 @@ export default (state = INITIAL_STATE, action) => {
       };
 
     case 'LOGIN_FAILED':
+      return {...state, loading: false, error: true};
+
+    case 'INITIAL_LOAD_FAILED':
       return {...state, loading: false, initialLoading: false};
 
     case 'LOGOUT_SUCCESS':

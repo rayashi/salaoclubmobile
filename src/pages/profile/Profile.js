@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, SafeAreaView} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
 import Colors from '../../styles/Colors';
@@ -13,29 +13,36 @@ export default ({navigation}) => {
 
   useEffect(() => {
     !user && navigation.navigate('Auth');
+    navigation.addListener('tabPress', e => {
+      !user && navigation.navigate('Auth');
+    });
   });
 
   function onLogoutPress() {
     dispatch(logout());
   }
 
-  if (!user) return null;
+  if (!user) {
+    return null;
+  }
 
   return (
     <ScrollView style={styles.scrow}>
-      <View style={styles.content}>
-        <Icon
-          name="user-circle"
-          type="FontAwesome5"
-          style={styles.avatarIcon}
-        />
-        <View style={styles.userData}>
-          <Text>{user.user.first_name}</Text>
-          <Text>{user.user.email}</Text>
-          <Text>{user.cliente.cel}</Text>
+      <SafeAreaView>
+        <View style={styles.content}>
+          <Icon
+            name="user-circle"
+            type="FontAwesome5"
+            style={styles.avatarIcon}
+          />
+          <View style={styles.userData}>
+            <Text>{user.user.first_name}</Text>
+            <Text>{user.user.email}</Text>
+            <Text>{user.cliente.cel}</Text>
+          </View>
+          <Button color={Colors.tertiary} text="SAIR" onPress={onLogoutPress} />
         </View>
-        <Button color={Colors.tertiary} text="SAIR" onPress={onLogoutPress} />
-      </View>
+      </SafeAreaView>
     </ScrollView>
   );
 };
@@ -53,5 +60,5 @@ const styles = StyleSheet.create({
   userData: {
     alignItems: 'center',
     marginBottom: 10,
-  }
+  },
 });

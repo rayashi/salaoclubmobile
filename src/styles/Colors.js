@@ -6,5 +6,5 @@ export default {
   quinary: '#F9D986',
   separator: '#f2f2f2',
   transparent: 'rgba(0, 0, 0, 0)',
-  lightAlpha: 'rgba(255, 255, 255, 0.4)'
-}
+  lightAlpha: 'rgba(255, 255, 255, 0.4)',
+};

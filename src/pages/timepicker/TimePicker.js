@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {StyleSheet, View, FlatList, ScrollView} from 'react-native';
 
 import {setCheckoutItem} from '../checkout/CheckoutActions';
-import {getAvailableTimes, resetAvailableTimes} from './TimePickerActions';
+import {getAvailableTimes} from './TimePickerActions';
 import Day from './Day';
 import Header from '../../shared/Header';
 import redirect from '../../shared/Redirect';
@@ -32,7 +32,6 @@ export default ({navigation}) => {
 
   return (
     <View style={styles.content}>
-
       <Header
         onLeftButtonPress={onBackwardPress}
         leftIcon={{name: 'ios-arrow-back', type: 'Ionicons'}}
@@ -60,5 +59,5 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     backgroundColor: 'white',
-  }
+  },
 });

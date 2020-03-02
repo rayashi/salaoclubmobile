@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  item: null
+  item: null,
 };
 
 export default (state = INITIAL_STATE, action) => {

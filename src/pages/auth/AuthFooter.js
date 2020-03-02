@@ -1,8 +1,6 @@
 import React from 'react';
 import {Text, TouchableOpacity, StyleSheet, View} from 'react-native';
 
-import Colors from '../../styles/Colors';
-
 export default props => {
   return (
     <View style={styles.content}>
@@ -21,9 +19,9 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
+    padding: 16,
   },
   buttonText: {
-    color: 'white'
+    color: 'white',
   },
 });

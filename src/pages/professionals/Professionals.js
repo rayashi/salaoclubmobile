@@ -13,7 +13,7 @@ export default ({navigation}) => {
   const {professionals, loading} = useSelector(state => state.StoreReducer);
   const {item} = useSelector(state => state.CheckoutReducer);
   const {user} = useSelector(state => state.AuthReducer);
-  
+
   let valid_professionals = [];
 
   if (professionals && item.service) {

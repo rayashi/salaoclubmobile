@@ -6,7 +6,6 @@ import Colors from '../../styles/Colors';
 import Button from '../../shared/Button';
 
 export default props => {
-
   return (
     <View style={styles.content}>
       <View style={styles.inputRow}>
@@ -58,7 +57,7 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     paddingHorizontal: 12,
-    marginVertical: 5,
+    marginVertical: 10,
     color: 'white',
   },
   inputIcon: {

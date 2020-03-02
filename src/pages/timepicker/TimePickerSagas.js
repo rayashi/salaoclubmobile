@@ -45,13 +45,15 @@ const formatTimes = days => {
       .format('dddd')
       .split('-')[0],
     shortDate: Moment(day.data).format('D/M/YY'),
-    hrs: day.hrs.filter(hr => hr[0] === 's').map(hr => {
-      let dateTime = getDateTimeFromApi(day.data, hr); 
-      return {
-        dateTime,
-        formattedTime: Moment(dateTime).format('hh:mm')
-      }
-    }),
+    hrs: day.hrs
+      .filter(hr => hr[0] === 's')
+      .map(hr => {
+        let dateTime = getDateTimeFromApi(day.data, hr);
+        return {
+          dateTime,
+          formattedTime: Moment(dateTime).format('hh:mm'),
+        };
+      }),
   }));
 };
 
@@ -61,5 +63,5 @@ const getDateTimeFromApi = (date, time) => {
   let day = parseInt(date.split('-')[2]);
   let hour = parseInt(time.slice(1).split(':')[0]);
   let minute = parseInt(time.slice(1).split(':')[1]);
-  return new Date(year, month, day, hour, minute)
-}
+  return new Date(year, month, day, hour, minute);
+};
