@@ -8,6 +8,7 @@ import {
   startInitialLoadAsync,
   logoutAsync,
 } from '../pages/auth/AuthSagas';
+import {bookAsync} from '../pages/checkout/CheckoutSagas';
 
 export default function* rootSagas() {
   yield all([
@@ -17,5 +18,6 @@ export default function* rootSagas() {
     takeLatest('LOGIN', loginAsync),
     takeLatest('LOGOUT', logoutAsync),
     takeLatest('START_INITIAL_LOAD', startInitialLoadAsync),
+    takeLatest('BOOK', bookAsync),
   ]);
 }

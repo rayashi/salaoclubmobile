@@ -8,17 +8,29 @@ import Shadow from '../../styles/Shadow';
 import Button from '../../shared/Button';
 import Colors from '../../styles/Colors';
 import {Icon} from 'native-base';
+import {book} from './CheckoutActions';
 
 export default ({route, navigation}) => {
   const dispatch = useDispatch();
-  const {item} = useSelector(state => state.CheckoutReducer);
+  const {item, booking} = useSelector(state => state.CheckoutReducer);
+  const {user} = useSelector(state => state.AuthReducer);
 
   useEffect(init, []);
+
+  useEffect(() => {
+    if (!item && !booking) {
+      navigation.navigate('Schedule');
+    }
+  }, [booking, item]);
 
   function init() {}
 
   function onBackwardPress() {
     navigation.goBack();
+  }
+
+  function onConfirm() {
+    dispatch(book({item, user}));
   }
 
   return (
@@ -77,7 +89,11 @@ export default ({route, navigation}) => {
             </View>
           </View>
           <View style={styles.bottom}>
-            <Button text="Confirmar" color={Colors.primary} />
+            <Button
+              onPress={onConfirm}
+              text="Confirmar"
+              color={Colors.primary}
+            />
           </View>
         </SafeAreaView>
       </ScrollView>
