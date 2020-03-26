@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
   },
   iconRight: {
     fontSize: 22,
-    backgroundColor: 'red',
     color: Colors.primary,
   },
   button: {

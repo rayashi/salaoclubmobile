@@ -2,12 +2,12 @@ import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Text, StyleSheet, View, ScrollView, SafeAreaView} from 'react-native';
 import Moment from 'moment';
+import {Icon, Toast} from 'native-base';
 
 import Header from '../../shared/Header';
 import Shadow from '../../styles/Shadow';
 import Button from '../../shared/Button';
 import Colors from '../../styles/Colors';
-import {Icon} from 'native-base';
 import {book} from './CheckoutActions';
 
 export default ({route, navigation}) => {
@@ -18,8 +18,13 @@ export default ({route, navigation}) => {
   useEffect(init, []);
 
   useEffect(() => {
-    if (!item && !booking) {
-      navigation.navigate('Schedule');
+    if (item.booked && !booking) {
+      Toast.show({
+        text: 'Obrigado, seu agendamento foi enviado! O profissional logo irá confirmar 👍',
+        type: 'success',
+        duration: 4000,
+      });
+      navigation.reset();
     }
   }, [booking, item]);
 
@@ -30,6 +35,7 @@ export default ({route, navigation}) => {
   }
 
   function onConfirm() {
+    if(booking) return;
     dispatch(book({item, user}));
   }
 
@@ -38,6 +44,8 @@ export default ({route, navigation}) => {
       <Header
         onLeftButtonPress={onBackwardPress}
         leftIcon={{name: 'ios-arrow-back', type: 'Ionicons'}}
+        onRightButtonPress={onConfirm}
+        rightIcon={{name: 'ios-checkmark-circle-outline', type: 'Ionicons'}}
         title={'Confirme seu agendamento'}
       />
       <ScrollView>
@@ -90,8 +98,9 @@ export default ({route, navigation}) => {
           </View>
           <View style={styles.bottom}>
             <Button
+              disabled={booking || item.booked}
               onPress={onConfirm}
-              text="Confirmar"
+              text={booking || item.booked ? "Salvando seu pedido..." : "Confirmar" }
               color={Colors.primary}
             />
           </View>

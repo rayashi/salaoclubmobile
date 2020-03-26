@@ -4,7 +4,7 @@ import {Icon} from 'native-base';
 
 export default props => (
   <TouchableOpacity
-    style={[styles.content, {backgroundColor: props.color}]}
+    style={[styles.content, {backgroundColor: props.disabled ? 'gray' : props.color}]}
     onPress={props.onPress}>
     {props.iconName && props.iconType && (
       <Icon name={props.iconName} type={props.iconType} style={styles.icon} />

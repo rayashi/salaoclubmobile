@@ -12,9 +12,9 @@ export default (state = INITIAL_STATE, action) => {
       return {...state, booking: true};
 
     case 'BOOK_SUCCESS':
-      return {...state, booking: false};
+      return {...state, booking: false, item: {...state.item, booked: true}};
 
-    case 'BOOK_SUCCESS':
+    case 'BOOK_FAILUED':
       return {...state, booking: false};
 
     default:
