@@ -12,11 +12,10 @@ export default ({navigation}) => {
   const {user} = useSelector(state => state.AuthReducer);
 
   useEffect(() => {
-    !user && navigation.navigate('Auth');
-    navigation.addListener('tabPress', e => {
+    return navigation.addListener('focus', () => {
       !user && navigation.navigate('Auth');
     });
-  });
+  }, [navigation]);
 
   function onLogoutPress() {
     dispatch(logout());
