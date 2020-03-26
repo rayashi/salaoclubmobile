@@ -14,7 +14,7 @@ export const formatTimes = (days, timezone_offset) => {
         let dateTime = getDateTimeFromApi(day.data, hr);
         return {
           dateTime,
-          formattedTime: Moment(dateTime).format('hh:mm'),
+          formattedTime: Moment(dateTime).format('HH:mm'),
           apiTime: getApiDateTime(dateTime, timezone_offset)
         };
       }),
