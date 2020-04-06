@@ -16,6 +16,7 @@
     "@react-navigation/native": "^5.0.0",
     "@react-navigation/stack": "^5.0.0",
     "axios": "^0.19.2",
+    "minimist": "^1.2.5",
     "moment": "^2.24.0",
     "native-base": "^2.13.8",
     "react": "16.9.0",
