@@ -12,7 +12,7 @@ const fetchBook = async ({item, user}) => {
     itens: [],
     status: 0,
   };
-  const headerResponse = await axios.post('/compromissos', headerData);  
+  const headerResponse = await axios.post('/compromissos', headerData);
   const itemData = {
     compromisso: headerResponse.data.id,
     inicio: item.time.apiTime,
@@ -20,7 +20,7 @@ const fetchBook = async ({item, user}) => {
     profissional: item.professional.id,
     servico: item.service.id,
   };
-  await axios.post('/itens', itemData);  
+  await axios.post('/itens', itemData);
 };
 
 export function* bookAsync(action) {
