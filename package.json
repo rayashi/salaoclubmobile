@@ -18,7 +18,7 @@
     "acorn": "^7.1.1",
     "axios": "^0.19.2",
     "minimist": "^1.2.5",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "native-base": "^2.13.8",
     "react": "16.9.0",
     "react-native": "0.61.5",
